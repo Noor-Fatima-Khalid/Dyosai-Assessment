@@ -16,47 +16,24 @@ A modular AI system for routing and handling different types of queries, includi
 ai_app/
 
 ├── app/
-
 │   ├── data/
-
 │   │   ├── tickets.json
-
 │   │   ├── refund_policy.md
-
 │   │   ├── account_upgrade.md
-
 │   │   ├── api_rate_limits.md
-
 │   │   ├── security_practices.md
-
 │   │   └── integration_setup.md
-
 │   ├── services/
-
 │   │   ├── rag.py
-
 │   │   ├── ticket_service.py
-
 │   │   └── query_classifier.py
-
 │   ├── routes/
-
 │   │   ├── knowledge_base.py
-
 │   │   ├── ticket_lookup.py
-
-│   │   ├── ambiguity.py
-
-│   │   └── unsupported.py
-
 │   ├── schemas.py
-
 │   └── main.py
-
-├── .env
-
+├── .env.example
 ├── requirements.txt
-
 └── README.md
 
 ---
@@ -65,11 +42,11 @@ ai_app/
 
 ### **1. Prerequisites**
 - Python 3.9+
-- Virtual environment (recommended)
+- Virtual environment 
 
 ### **2. Clone the Repository**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Noor-Fatima-Khalid/Dyosai-Assessment/
 cd ai_app
 ### **3. Create a virtual environment**
 python -m venv venv
@@ -79,39 +56,19 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 Running the System
 1. Start the FastAPI Server
-bash
-Copy
-
 uvicorn app.main\:app --reload
 
-
-
 2. Access the API
-
 Swagger UI: Open http://localhost:8000/docs in your browser to interact with the API.
-Direct Endpoints:
-
-POST /api/knowledge_base
-POST /api/ticket_lookup
-
 
 Example Queries
 1. Knowledge Base Queries
 Endpoint: POST /api/knowledge_base
 Request:
-json
-Copy
-
 {
   "query": "What is the refund policy?"
 }
-
-
-
 Response:
-json
-Copy
-
 {
   "route": "KNOWLEDGE_BASE",
   "confidence": 0.82,
@@ -122,25 +79,13 @@ Copy
   "classification": "ANSWERED"
 }
 
-
-
-
 2. Ticket Lookup Queries
 Endpoint: POST /api/ticket_lookup
 Request:
-json
-Copy
-
 {
   "query": "What is the status of ticket T-2001?"
 }
-
-
-
 Response:
-json
-Copy
-
 {
   "route": "TICKET_LOOKUP",
   "confidence": 0.99,
@@ -158,25 +103,14 @@ Copy
   "classification": "ANSWERED"
 }
 
-
-
-
 3. Ambiguous Queries
 Endpoint: POST /api/knowledge_base or POST /api/ticket_lookup
 Request:
-json
-Copy
-
 {
   "query": "Can you check that ticket for me?"
 }
 
-
-
 Response:
-json
-Copy
-
 {
   "route": "AMBIGUOUS",
   "confidence": 0.9,
@@ -193,25 +127,14 @@ Copy
   "classification": "AMBIGUOUS"
 }
 
-
-
-
 4. Unsupported Queries
 Endpoint: POST /api/knowledge_base or POST /api/ticket_lookup
 Request:
-json
-Copy
-
 {
   "query": "Do you support on-premise deployment?"
 }
 
-
-
 Response:
-json
-Copy
-
 {
   "route": "UNSUPPORTED",
   "confidence": 0.9,
@@ -225,17 +148,8 @@ Copy
 }
 
 
-
-
 Troubleshooting
 
 404 Errors: Ensure the FastAPI server is running and you’re accessing the correct endpoint.
 Missing Data: Verify that tickets.json and Markdown files are in the data/ directory.
 API Key Issues: Double-check your .env file for the correct GOOGLE_API_KEY.
-
-License
-This project is licensed under the MIT License.
-
----
-
-
