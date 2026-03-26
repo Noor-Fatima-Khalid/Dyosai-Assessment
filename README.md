@@ -31,7 +31,6 @@ ai_app/
 ├── requirements.txt
 └── README.md
 
----
 
 ## **Setup Instructions**
 
