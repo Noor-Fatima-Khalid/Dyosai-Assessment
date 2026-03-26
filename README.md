@@ -2,19 +2,14 @@
 
 A modular AI system for routing and handling different types of queries, including knowledge base lookups, ticket/account lookups, ambiguity handling, and unsupported questions.
 
----
-
 ## **Features**
 - **Knowledge Base Lookup**: Retrieve answers from a set of Markdown documents.
 - **Ticket Lookup**: Fetch ticket details from a JSON database.
 - **Ambiguity Handling**: Detect and ask for clarification on vague queries.
 - **Unsupported Questions**: Inform users when a query cannot be answered.
 
----
-
 ## **Project Structure**
 ai_app/
-
 ├── app/
 │   ├── data/
 │   │   ├── tickets.json
